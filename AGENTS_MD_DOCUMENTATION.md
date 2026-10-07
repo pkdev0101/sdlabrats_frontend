@@ -51,6 +51,9 @@ Split logic into clear layers:
 
 * **Prioritize SASS:** Use SASS (`.scss`) for styling instead of standard CSS or inline styles.
 * **SASS compatibility:** The current Jekyll build uses Ruby Sass. Use `rgba(0, 0, 0, 0.15)` for transparent colors, not unsupported `rgb(0 0 0 / 15%)` syntax. Validate through the Makefile's Jekyll build.
+* **Ruby Sass math:** Wrap mixed units in `calc()` inside `clamp()` (`clamp(2rem, calc(1rem + 3vw), 4rem)`); Ruby Sass evaluates bare `min()`/`max()` itself and fails on mixed units.
+* **Standalone project styles:** A project whose `sass/main.scss` contains `// @ocs-standalone` is left out of the global `style.css` and served only as `assets/css/projects/<name>/main.css`; it must import the OCS elements it uses. Used by public sites such as `nonprofits/sdlabrats`.
+* **Jekyll include params:** Jekyll 3.9 `{% include %}` parameters cannot take filters; `assign` the value first.
 * **Use `_projects`:** Leverage the modular project auto-registration system in the `_projects/` directory for new projects.
 * **System Expansion:** Work within the existing systems and expand them if needed, rather than creating completely new parallel architectures.
 * **Calendar pages:** Keep layout and modal styling out of `navigation/calendar.md`; use semantic classes and SCSS instead of utility-heavy inline markup.
@@ -63,6 +66,7 @@ Split logic into clear layers:
 
 * Treat [Makefile](Makefile) as the single source of truth; common targets are `make`/`make serve-current`, `make dev`, `make stop`, `make convert`, and `make convert-single` (details in [README.md](README.md)).
 * Order matters: stop → build projects → convert notebooks/docx → split courses → jekyll serve (follow [Makefile](Makefile)).
+* **San Diego LabRats site:** lives in `_projects/nonprofits/sdlabrats/` (see its README). It owns the site root `/`, uses `_layouts/sdlabrats.html` and `_data/sdlabrats.yml`, and posts forms to the Flask backend `/api/labrats/inquiries`. Keep sdlabrats.org URLs unchanged.
 * Project builds must run the [SASS import generator](scripts/generate_sass_imports.py) to create `_sass/projects/_all.scss`; `build-registered-projects` owns this dependency so Jekyll can resolve `projects/all`.
 * Use template-generated project Makefiles. Do not add local npm manifests, `.gitignore` files or Makefile overrides for shared browser libraries. Keep shared runtime libraries in `assets/js/vendor/` with licenses and version documentation; ordinary builds need no npm installation.
 

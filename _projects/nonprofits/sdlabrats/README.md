@@ -1,0 +1,93 @@
+# San Diego LabRats website
+
+The public website for San Diego LabRats (sdlabrats.org), rebuilt as a registered
+OCS project. Planning lives in
+[pkdev0101/sdlabrats_frontend#1](https://github.com/pkdev0101/sdlabrats_frontend/issues/1).
+
+## How the project is wired
+
+| Piece | Source (edit here) | Published to (generated, git-ignored) |
+|-------|--------------------|----------------------------------------|
+| Pages | `navigation/*.md` | `_posts/projects/sdlabrats/` |
+| Page templates and partials | `navigation/*.html` | `_includes/projects/sdlabrats/` |
+| Styles | `sass/` | `_sass/projects/sdlabrats/`, compiled into `/assets/css/style.css` |
+| Scripts | `js/` | `/assets/js/projects/sdlabrats/` |
+| Images | `images/` | `/images/projects/sdlabrats/` |
+
+Two files sit outside the project folder because Jekyll only reads them from fixed
+locations:
+
+- `_layouts/sdlabrats.html`: the page shell (head, header, footer).
+- `_data/sdlabrats.yml`: organization facts, navigation, and the program catalog.
+  Phone number, address, EIN, and social links are written once here.
+
+Downloadable PDFs (impact report, at-home lab procedures) live in
+`assets/pdfs/sdlabrats/`.
+
+Build with the normal workflow: `make` (or `make build`). The project is registered
+in `_projects/.makeprojects` as `nonprofits/sdlabrats`.
+
+### Backend
+
+Forms post to the Flask backend (`sdlabrats_backend`):
+
+- `POST /api/labrats/inquiries` stores contact, scholarship, partnership,
+  video-topic, and newsletter submissions, and emails staff when SMTP is configured.
+- `GET /api/programs/` returns the program catalog the backend validates against.
+
+`js/labrats-forms.js` reads the backend address from `assets/js/api/config.js`
+(`pythonURI`), so local development talks to `localhost:8587`.
+
+Payments and registration stay on Donorbox (out of scope for the rebuild). A
+registration page sets `donorbox_campaign` in its front matter and the template
+embeds the matching Donorbox form.
+
+## Page templates
+
+Every page sets `layout: sdlabrats` plus a `template`:
+
+| `template` | Used for | Key front matter |
+|------------|----------|------------------|
+| `page` (default) | Hubs, About pages, support pages | `section`, `description` |
+| `program` | The five program pages; one shared information order | `program` (catalog slug), `facts` |
+| `registration` | Monthly afterschool and camp registration pages | `session` block, `donorbox_campaign` |
+| `archive` | Past events and retired pages that still have URLs | `archive_note`, `current_url` |
+| `redirect` | Live URLs that were empty or moved | `redirect_to` |
+
+### Keeping the schedule current
+
+`/schedule/` lists every registration page whose front matter has
+`session.status: open`. To open next month's afterschool sessions, edit the
+registration page for that month (dates, `donorbox_campaign`) and set
+`status: open`; set last month's page to `closed`. No other page needs editing.
+
+## Design direction
+
+Written down before building, per the project's anti-template guide.
+
+- **Who and what:** parents of K-8 kids in North County San Diego deciding on a
+  science program, then teachers booking assemblies, then donors.
+- **Feeling:** curious. A working lab, not a brochure.
+- **Color** (from the logo artwork, sampled):
+  - Ink navy `#0E1B33`: text, header rule, the dark footer band.
+  - Goggle orange `#F5A00A`: primary actions only, with navy text on it.
+  - Lens blue `#1B5A9C` for links and focus; tint `#EEF6FC` for quiet surfaces.
+- **Type:** Bricolage Grotesque (headings, weight 800/500) for the hand-lettered
+  energy of the logo; Atkinson Hyperlegible Next (body) because parents read
+  schedules on phones and this face was drawn for legibility.
+- **Shape:** slightly rounded (6px controls, 8px surfaces), borders instead of
+  shadows, no hover lift.
+- **Layout:** left-aligned text with real program photos. Program pages share
+  one order (what it is, facts, a session, schedule, paying, questions) so they
+  can be compared. Schedules are timetables, not cards.
+- **Motion:** state changes only (hover, focus, menu, form submit). Respects
+  `prefers-reduced-motion`.
+
+Colors are mapped onto the OCS preference tokens (`--pref-*`, `--panel`,
+`--ui-border`, `--text-muted`) inside the `.labrats` scope, so OCS grammar
+(`ocs__btn`, `ocs__card`, `ocs__input`, `ocs__table`, `ocs__toggle`) renders in
+the brand palette. The literal hex values exist only in `sass/_tokens.scss`.
+
+See `docs/content-map.md` for where every sdlabrats.org URL went, and
+`docs/content-notes.md` for problems found in the live content that need an
+answer from LabRats staff.

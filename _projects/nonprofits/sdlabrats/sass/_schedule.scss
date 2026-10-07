@@ -1,0 +1,119 @@
+// Session timetables and camp day plans. Tables use the OCS table grammar.
+
+.labrats {
+  .labrats__sessions {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .labrats__session {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--pref-text-color);
+
+    h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.375rem;
+    }
+
+    .ocs__table-wrap {
+      margin-block: 1rem 1.25rem;
+    }
+  }
+
+  .labrats__session-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+
+  .ocs__table {
+    font-variant-numeric: tabular-nums;
+
+    th,
+    td {
+      padding: 0.7rem 1rem 0.7rem 0;
+      font-size: 1rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    tbody tr,
+    tbody tr:nth-child(even) {
+      background: transparent;
+    }
+
+    tbody tr:hover,
+    tbody tr:nth-child(even):hover {
+      background: var(--labrats-tint);
+    }
+
+    td:first-child {
+      font-weight: 700;
+    }
+  }
+
+  // A day at camp: time on the left, activity on the right.
+  .labrats__day {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0 1.5rem;
+    max-width: $labrats-measure;
+    margin: 0 0 1.5rem;
+    font-variant-numeric: tabular-nums;
+
+    dt,
+    dd {
+      margin: 0;
+      padding-block: 0.55rem;
+      border-bottom: 1px solid var(--ui-border);
+    }
+
+    dt {
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 30rem) {
+      grid-template-columns: minmax(0, 1fr);
+
+      dt {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .labrats__day-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 0 2.5rem;
+  }
+
+  .labrats__price {
+    max-width: $labrats-measure;
+  }
+}
+
+.labrats details {
+  max-width: $labrats-measure;
+  margin-bottom: 1.25rem;
+  border-block: 1px solid var(--ui-border);
+
+  summary {
+    padding-block: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  ul {
+    margin-top: 0.25rem;
+  }
+}

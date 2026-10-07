@@ -150,6 +150,7 @@ Projects can seamlessly deploy standard styles and scripts to the global `assets
 
 - **JS**: Any files inside `js/` will be copied to `assets/js/projects/<project-name>/`.
 - **SASS**: Any `.scss` files inside `sass/` will be copied to `_sass/projects/<project-name>/`. If a `main.scss` exists inside the `sass/` directory, it configures Jekyll to natively compile the SCSS into `assets/css/projects/<project-name>/main.css`.
+- **Standalone styles**: `main.scss` is also imported into the global `assets/css/style.css` through `_sass/projects/_all.scss`. Add the line `// @ocs-standalone` to `main.scss` to skip the global bundle; the project then links its own `main.css` and imports the OCS elements it needs.
 
 ### Template Makefile Details
 

@@ -1,0 +1,140 @@
+// Dark footer band: organization facts, site map, newsletter signup, theme toggle.
+
+.labrats {
+  .labrats__footer {
+    margin-top: 0;
+    padding-block: 3.5rem 1.5rem;
+    background: var(--labrats-band);
+    color: var(--labrats-on-band);
+
+    h2 {
+      margin-bottom: 0.75rem;
+      color: var(--labrats-on-band);
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    p,
+    li,
+    address {
+      color: var(--labrats-on-band-muted);
+      font-size: 0.9375rem;
+    }
+
+    p {
+      margin-bottom: 0.6rem;
+    }
+
+    a {
+      color: var(--labrats-on-band);
+
+      &:hover {
+        color: var(--labrats-on-band);
+        text-decoration-color: var(--labrats-signal);
+      }
+    }
+
+    // Inputs keep the light surface so they read as fields on the dark band.
+    .ocs__input {
+      background-color: var(--pref-bg-color);
+    }
+
+    label,
+    .labrats__required {
+      color: var(--labrats-on-band);
+    }
+
+    .labrats__form-status,
+    .labrats__form-status[data-state] {
+      color: var(--labrats-on-band);
+    }
+
+    .labrats__field-error {
+      color: var(--labrats-signal);
+    }
+  }
+
+  .labrats__footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: 2.5rem 3rem;
+
+    address {
+      margin-bottom: 0.6rem;
+    }
+
+    @media (max-width: 60rem) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    @media (max-width: 36rem) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .labrats__footer-sitemap {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    grid-column: 1 / -1;
+    padding-top: 2rem;
+    border-top: 1px solid color-mix(in srgb, var(--labrats-on-band) 18%, transparent);
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    @media (min-width: 60rem) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    @media (max-width: 36rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .labrats__footer-signup {
+    grid-column: 3;
+    grid-row: 1;
+
+    @media (max-width: 60rem) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+  }
+
+  .labrats__footer-base {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--labrats-on-band) 18%, transparent);
+
+    p {
+      margin: 0;
+    }
+
+    .ocs__toggle {
+      color: var(--labrats-on-band);
+      font-size: 0.9375rem;
+    }
+  }
+
+  .labrats__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

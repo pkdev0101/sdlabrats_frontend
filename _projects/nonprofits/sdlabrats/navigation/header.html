@@ -1,0 +1,25 @@
+{%- assign org = site.data.sdlabrats -%}
+<header class="labrats__header">
+  <div class="labrats__wrap labrats__header-row">
+    <a class="labrats__brand" href="{{ '/' | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>
+      <img src="{{ org.logo | relative_url }}" width="48" height="48" alt="">
+      <span>San Diego <strong>LabRats</strong></span>
+    </a>
+
+    <button class="labrats__menu-toggle" type="button" aria-expanded="false" aria-controls="labrats-nav" data-labrats-menu-toggle>
+      <span class="labrats__menu-icon" aria-hidden="true"></span>
+      Menu
+    </button>
+
+    <nav class="labrats__nav" id="labrats-nav" aria-label="Main">
+      <ul>
+        {%- for section in org.sections %}
+        <li>
+          <a href="{{ section.url | relative_url }}"{% if page.section == section.id %} aria-current="{% if page.url == section.url %}page{% else %}true{% endif %}"{% endif %}>{{ section.title }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+      <a class="labrats__nav-phone" href="{{ org.phone_href }}">Call {{ org.phone }}</a>
+    </nav>
+  </div>
+</header>

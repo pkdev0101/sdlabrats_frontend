@@ -1,0 +1,491 @@
+// Content components shared across LabRats pages.
+
+.labrats {
+  // Home hero: statement on the left, a real class photo on the right.
+  .labrats__hero {
+    padding-block: 3rem 3.5rem;
+    border-bottom: 1px solid var(--ui-border);
+
+    h1 {
+      max-width: 13ch;
+      font-size: clamp(2.6rem, calc(1.2rem + 5vw), 5.25rem);
+    }
+
+    .ocs__lead {
+      font-size: 1.25rem;
+    }
+  }
+
+  .labrats__hero-visit {
+    margin-top: 1.75rem;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  // Photo with a caption; the only rounded imagery on the site.
+  .labrats__figure {
+    margin: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: $labrats-radius-surface;
+    }
+
+    figcaption {
+      margin-top: 0.6rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+  }
+
+  // Specimen-style label for grade bands: "Grades K-3".
+  .labrats__grade {
+    display: inline-block;
+    padding: 0.15rem 0.55rem 0.15rem 0.5rem;
+    border: 1px solid var(--ui-border);
+    border-left: 4px solid var(--labrats-signal);
+    border-radius: 2px;
+    background: var(--pref-bg-color);
+    color: var(--pref-text-color);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  // Program index: rows with a photo, not a grid of identical cards.
+  .labrats__programs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ui-border);
+  }
+
+  .labrats__program {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-block: 1.75rem;
+    border-bottom: 1px solid var(--ui-border);
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: $labrats-radius-surface;
+      background: var(--panel-mid);
+    }
+
+    h3 {
+      margin-bottom: 0.35rem;
+      font-size: 1.5rem;
+
+      a {
+        color: var(--pref-text-color);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          text-decoration-color: var(--labrats-signal);
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 40rem) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+
+      img {
+        aspect-ratio: 16 / 9;
+      }
+    }
+  }
+
+  .labrats__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  // Key facts for a program, in the same order on every program page.
+  .labrats__facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--ui-border);
+
+    > div {
+      padding: 1rem 1.25rem 1rem 0;
+      border-bottom: 1px solid var(--ui-border);
+    }
+
+    dt {
+      margin-bottom: 0.2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    dd {
+      margin: 0;
+      font-weight: 700;
+    }
+  }
+
+  // Page-level notice: archived content, closed sessions, missing information.
+  .labrats__notice {
+    max-width: $labrats-measure;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--labrats-signal);
+    border-radius: 0 $labrats-radius-surface $labrats-radius-surface 0;
+    background: var(--labrats-tint);
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 0.5rem;
+    }
+  }
+
+  // Responsive 16:9 frame for video embeds.
+  .labrats__embed {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: $labrats-radius-surface;
+    background: var(--panel-mid);
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    &--document {
+      aspect-ratio: 3 / 4;
+      max-width: 34rem;
+    }
+  }
+
+  // Third-party forms (Donorbox, Google Forms) that size themselves.
+  .labrats__widget {
+    max-width: 44rem;
+    margin-block: 1.5rem;
+
+    iframe {
+      width: 100%;
+      min-height: 40rem;
+      border: 0;
+    }
+  }
+
+  .labrats__videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    h3 {
+      margin-top: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    &--compact {
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    }
+  }
+
+  // Dark call-to-action band (donations on the home page).
+  .labrats__cta {
+    padding: 2.5rem;
+    border-radius: $labrats-radius-surface;
+    background: var(--labrats-band);
+    color: var(--labrats-on-band);
+
+    h2,
+    p {
+      color: var(--labrats-on-band);
+    }
+
+    p {
+      color: var(--labrats-on-band-muted);
+    }
+
+    a:not(.ocs__btn) {
+      color: var(--labrats-on-band);
+    }
+
+    @media (max-width: 40rem) {
+      padding: 1.75rem 1.25rem;
+    }
+  }
+
+  // People on the team page.
+  .labrats__people {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .labrats__person {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 2rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--ui-border);
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: $labrats-radius-surface;
+    }
+
+    h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 36rem) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+
+      img {
+        max-width: 9rem;
+      }
+    }
+  }
+
+  .labrats__person--text {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .labrats__role {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  // The Code of Honor: the one place with large numerals.
+  .labrats__honor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: honor;
+
+    li {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      padding-block: 0.85rem;
+      border-bottom: 1px solid var(--ui-border);
+      font-size: 1.125rem;
+      counter-increment: honor;
+
+      &::before {
+        content: counter(honor);
+        min-width: 1.5ch;
+        color: var(--pref-accent-color);
+        font-family: $labrats-font-display;
+        font-size: 1.75rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+    }
+  }
+
+  .labrats__motto {
+    max-width: 18ch;
+    margin: 0 0 1rem;
+    font-family: $labrats-font-display;
+    font-size: clamp(2rem, calc(1.2rem + 3vw), 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  // Press outlets on the home page.
+  .labrats__outlets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    align-items: center;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+
+    img {
+      max-height: 3rem;
+      width: auto;
+    }
+  }
+
+  // OCS grid cells keep their surfaces but drop the hover lift on this site.
+  .ocs__grid--card .ocs__grid-cell {
+    border-radius: $labrats-radius-surface;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  .labrats__clipping {
+    display: block;
+    color: var(--pref-text-color);
+    text-decoration: none;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top;
+      border: 1px solid var(--ui-border);
+      border-radius: $labrats-radius-control;
+      background: var(--pref-bg-color);
+    }
+
+    span {
+      display: block;
+      margin-top: 0.6rem;
+      font-weight: 700;
+    }
+
+    small {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+  }
+
+  .labrats__downloads {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ui-border);
+
+    li {
+      padding-block: 0.75rem;
+      border-bottom: 1px solid var(--ui-border);
+    }
+
+    a {
+      font-weight: 700;
+    }
+
+    small {
+      color: var(--text-muted);
+    }
+  }
+
+  // Plain bulleted list with tighter rhythm, for content lists inside prose.
+  .labrats__list {
+    max-width: $labrats-measure;
+    margin: 0 0 1.25rem;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.4rem;
+      padding-left: 0.25rem;
+    }
+
+    li::marker {
+      color: var(--pref-accent-color);
+    }
+  }
+
+  .labrats__columns {
+    columns: 2 16rem;
+    column-gap: 2.5rem;
+
+    li {
+      break-inside: avoid;
+    }
+  }
+}
+
+// Lab photos in a grid share one crop so rows line up.
+.labrats .labrats__videos .labrats__figure img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+// Attributed quotes from families and interns (sourced from the impact report).
+.labrats {
+  .labrats__quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2rem 3rem;
+  }
+
+  blockquote {
+    align-self: start;
+    margin: 0 0 1.5rem;
+    padding-left: 1.25rem;
+    border-left: 4px solid var(--labrats-signal);
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+      line-height: 1.55;
+    }
+
+    footer {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+  }
+
+  .labrats__pullquote p {
+    font-family: $labrats-font-display;
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .ocs__stats {
+    margin-block: 1.5rem;
+  }
+
+  .ocs__stat {
+    border-radius: $labrats-radius-surface;
+    background: var(--pref-bg-color);
+    text-align: left;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .ocs__stat-value {
+    font-family: $labrats-font-display;
+    font-size: 2rem;
+  }
+
+  .ocs__stat-label {
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text-muted);
+  }
+}
+
+.labrats .labrats__videos--compact {
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+}

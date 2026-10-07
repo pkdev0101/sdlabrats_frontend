@@ -38,6 +38,9 @@ lessons/python
 lessons/javascript
 lessons/java
 
+# Nonprofits
+nonprofits/sdlabrats
+
 # Systems
 systems/ai-ab-engine
 systems/calendar
