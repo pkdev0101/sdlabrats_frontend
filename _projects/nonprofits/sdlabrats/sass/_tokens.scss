@@ -1,0 +1,81 @@
+// San Diego LabRats brand tokens.
+//
+// Literal colors live only in this file. They are the LabRats brand (sampled from the
+// logo artwork), mapped onto the OCS preference contract so every OCS element
+// (ocs__btn, ocs__card, ocs__input, ocs__table, ocs__toggle) renders in brand colors.
+
+$labrats-palettes: (
+  light: (
+    bg: #FFFFFF,
+    text: #0E1B33,          // ink navy from the logo outline
+    muted: #46546C,
+    accent: #1B5A9C,        // lens blue, darkened for text contrast
+    surface: #F3F6FA,
+    tint: #EEF6FC,          // lens blue at low strength
+    border: #D3DDE8,
+    control-border: #7B8799,   // form field outlines, 3:1 against the page
+    signal: #F5A00A,        // goggle orange
+    on-signal: #0E1B33,
+    band: #0E1B33,          // dark footer band
+    on-band: #E8EEF7,
+    on-band-muted: #AEBBD0,
+    success: #1E7A46,
+    danger: #B42318
+  ),
+  dark: (
+    bg: #0B1426,
+    text: #E8EEF7,
+    muted: #AEBBD0,
+    accent: #8CC8F2,
+    surface: #111D33,
+    tint: #13243F,
+    border: #263652,
+    control-border: #6E7F9C,
+    signal: #F5A00A,
+    on-signal: #0E1B33,
+    band: #060D1A,
+    on-band: #E8EEF7,
+    on-band-muted: #AEBBD0,
+    success: #6FD39A,
+    danger: #FF8A80
+  )
+);
+
+$labrats-font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+$labrats-font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+
+// Layout
+$labrats-wrap: 72rem;
+$labrats-measure: 42rem;
+$labrats-gutter: 1.25rem;
+$labrats-radius-control: $radius-xs;   // 6px
+$labrats-radius-surface: $radius-sm;   // 8px
+
+// Emits the OCS preference tokens plus LabRats aliases for one palette.
+@mixin labrats-theme($name) {
+  $palette: map-get($labrats-palettes, $name);
+
+  --pref-bg-color: #{map-get($palette, bg)};
+  --pref-text-color: #{map-get($palette, text)};
+  --pref-accent-color: #{map-get($palette, accent)};
+  --pref-success-color: #{map-get($palette, success)};
+  --pref-font-family: #{$labrats-font-body};
+  --pref-font-size: 1.0625rem;
+  --text-muted: #{map-get($palette, muted)};
+  --panel: #{map-get($palette, bg)};
+  --panel-mid: #{map-get($palette, surface)};
+  --ui-bg: #{map-get($palette, surface)};
+  --ui-border: #{map-get($palette, border)};
+  --red: #{map-get($palette, danger)};
+  --green: #{map-get($palette, success)};
+
+  --labrats-control-border: #{map-get($palette, control-border)};
+  --labrats-tint: #{map-get($palette, tint)};
+  --labrats-signal: #{map-get($palette, signal)};
+  --labrats-on-signal: #{map-get($palette, on-signal)};
+  --labrats-band: #{map-get($palette, band)};
+  --labrats-on-band: #{map-get($palette, on-band)};
+  --labrats-on-band-muted: #{map-get($palette, on-band-muted)};
+
+  color-scheme: $name;
+}

@@ -1,0 +1,31 @@
+// @ocs-standalone
+// San Diego LabRats site stylesheet, served as /assets/css/projects/sdlabrats/main.css.
+//
+// The marker above keeps this project out of the global OCS bundle (style.css, ~960 KB):
+// a public site loads only the OCS grammar it uses. See scripts/generate_sass_imports.py.
+
+// OCS foundations: color map, design-system variables, and table mixin.
+@import "open-coding/theme/legacy/root-color-map";
+@import "open-coding/mixins/variables";
+@import "open-coding/mixins/forms";
+
+// OCS element grammar used by LabRats pages.
+@import "open-coding/elements/buttons/includes";
+@import "open-coding/elements/containers/main";
+@import "open-coding/elements/grids/main";
+@import "open-coding/elements/images/main";
+@import "open-coding/elements/tables/main";
+@import "open-coding/elements/text_input/main";
+@import "open-coding/elements/toggles/common";
+@import "open-coding/elements/typography/colors";
+@import "open-coding/elements/capstone/main";
+
+// LabRats layer. Every rule below is scoped to body.labrats.
+@import "tokens";
+@import "base";
+@import "layout";
+@import "header";
+@import "footer";
+@import "components";
+@import "schedule";
+@import "forms";

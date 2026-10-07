@@ -2,6 +2,10 @@
 """
 Auto-generate _sass/projects/_all.scss with imports for all project SASS files.
 Scans _sass/projects/**/main.scss and creates import statements.
+
+A project whose main.scss contains the marker `// @ocs-standalone` is skipped: it is
+served only as its own stylesheet (assets/css/projects/<name>/main.css), for example a
+public site that imports just the OCS elements it needs instead of the full bundle.
 """
 
 import os
@@ -10,6 +14,12 @@ from pathlib import Path
 # Paths
 SASS_PROJECTS_DIR = Path("_sass/projects")
 OUTPUT_FILE = SASS_PROJECTS_DIR / "_all.scss"
+STANDALONE_MARKER = "// @ocs-standalone"
+
+
+def is_standalone(main_scss):
+    """True when the project opts out of the global OCS stylesheet."""
+    return STANDALONE_MARKER in main_scss.read_text(encoding="utf-8")
 
 def generate_sass_imports():
     """Generate the _all.scss file with dynamic imports."""
@@ -34,7 +44,7 @@ def generate_sass_imports():
         for project_dir in sorted(SASS_PROJECTS_DIR.iterdir()):
             if project_dir.is_dir() and project_dir.name != "__pycache__":
                 main_scss = project_dir / "main.scss"
-                if main_scss.exists():
+                if main_scss.exists() and not is_standalone(main_scss):
                     # Generate relative import path
                     rel_path = f"{project_dir.name}/main"
                     imports.append(f'@import "{rel_path}";')

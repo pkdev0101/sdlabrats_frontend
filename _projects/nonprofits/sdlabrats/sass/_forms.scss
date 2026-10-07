@@ -1,0 +1,167 @@
+// Form layout around the OCS input grammar (ocs__input) and states set by labrats-forms.js.
+
+.labrats {
+  .labrats__form {
+    max-width: 40rem;
+  }
+
+  .labrats__form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 1.25rem;
+
+    @media (max-width: 34rem) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .labrats__form--compact .labrats__form-grid {
+    gap: 0.75rem;
+  }
+
+  .labrats__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+
+    &--wide {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+    }
+  }
+
+  .ocs__input {
+    width: 100%;
+    min-height: 3rem;
+    border-color: var(--labrats-control-border);
+    border-radius: $labrats-radius-control;
+    background-color: var(--pref-bg-color);
+    font-size: 1rem;
+
+    &:hover {
+      border-color: var(--pref-text-color);
+    }
+
+    &[aria-invalid="true"] {
+      border-color: var(--red);
+    }
+  }
+
+  textarea.ocs__input {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  .labrats__required {
+    margin-left: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    font-weight: 400;
+  }
+
+  .labrats__hint {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .labrats__field-error {
+    margin: 0;
+    color: var(--red);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .labrats__fieldset {
+    margin: 0 0 1.75rem;
+    padding: 0;
+    border: 0;
+
+    legend {
+      margin-bottom: 0.85rem;
+      padding: 0;
+      font-family: $labrats-font-display;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    &[aria-invalid="true"] .labrats__choices {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  .labrats__question {
+    margin-bottom: 1rem;
+
+    > p:first-child {
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+  }
+
+  .labrats__choices {
+    display: grid;
+    gap: 0.25rem;
+
+    label {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      min-height: 2.75rem;
+      cursor: pointer;
+    }
+
+    &--inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.75rem;
+    }
+  }
+
+  // Undo the OCS global input padding and shadow for native checkboxes and radios.
+  input[type="checkbox"]:not(.ocs__toggle-input),
+  input[type="radio"] {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    padding: 0;
+    filter: none;
+    accent-color: var(--pref-accent-color);
+  }
+
+  .labrats__trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .labrats__form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .labrats__form-status {
+    margin: 0;
+    font-weight: 700;
+
+    &[data-state="success"] {
+      color: var(--pref-success-color);
+    }
+
+    &[data-state="error"] {
+      color: var(--red);
+    }
+  }
+}

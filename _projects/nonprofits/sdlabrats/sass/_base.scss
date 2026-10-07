@@ -1,0 +1,242 @@
+// Theme application, type scale, links, focus, and resets of OCS globals that do not
+// suit a public site (rounded images everywhere, muted body copy, input drop shadows).
+
+.labrats {
+  @include labrats-theme(light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .labrats:not([data-theme="light"]) {
+    @include labrats-theme(dark);
+  }
+}
+
+.labrats[data-theme="dark"] {
+  @include labrats-theme(dark);
+}
+
+// The html element sits outside the body scope, so overscroll areas get the page color here.
+html:has(> body.labrats) {
+  background: map-get(map-get($labrats-palettes, light), bg);
+  scroll-padding-top: 6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:has(> body.labrats:not([data-theme="light"])) {
+    background: map-get(map-get($labrats-palettes, dark), bg);
+  }
+}
+
+html:has(> body.labrats[data-theme="dark"]) {
+  background: map-get(map-get($labrats-palettes, dark), bg);
+}
+
+body.labrats {
+  margin: 0;
+  background: var(--pref-bg-color);
+  color: var(--pref-text-color);
+  font-family: var(--pref-font-family);
+  font-size: var(--pref-font-size);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0 0 0.5em;
+    color: var(--pref-text-color);
+    font-family: $labrats-font-display;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, calc(1.4rem + 3.2vw), 4rem);
+    line-height: 1.02;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, calc(1.2rem + 1.4vw), 2.25rem);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    margin: 0 0 0.4em;
+    font-size: 1rem;
+  }
+
+  p,
+  li,
+  dd,
+  dt,
+  address {
+    color: var(--pref-text-color);
+    font-style: normal;
+  }
+
+  p {
+    margin: 0 0 1em;
+    max-width: $labrats-measure;
+  }
+
+  a {
+    color: var(--pref-accent-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    transition: color $transition-fast ease, text-decoration-color $transition-fast ease;
+
+    &:hover {
+      color: var(--pref-text-color);
+      text-decoration-color: var(--labrats-signal);
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  a[href^="tel:"] {
+    white-space: nowrap;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--pref-accent-color);
+    outline-offset: 2px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .ocs__lead {
+    max-width: $labrats-measure;
+    color: var(--text-muted);
+    font-size: 1.1875rem;
+    line-height: 1.55;
+  }
+
+  .ocs__description,
+  .ocs__text {
+    margin: 0 0 1em;
+    max-width: $labrats-measure;
+  }
+
+  .ocs__callout {
+    max-width: $labrats-measure;
+    border-radius: $labrats-radius-surface;
+    background: var(--labrats-tint);
+    color: var(--pref-text-color);
+    font-size: 1rem;
+  }
+
+  .ocs__card {
+    border-radius: $labrats-radius-surface;
+  }
+
+  .ocs__section-title {
+    color: var(--text-muted);
+    font-family: $labrats-font-body;
+    letter-spacing: 0.04em;
+  }
+}
+
+// Buttons: OCS grammar with a 48px touch target and no hover scaling.
+body.labrats .ocs__btn {
+  min-height: 3rem;
+  height: auto;
+  padding: 0.6rem 1.15rem;
+  border-radius: $labrats-radius-control;
+  font-family: $labrats-font-body;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background $transition-fast ease, border-color $transition-fast ease, color $transition-fast ease;
+
+  &:hover {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+body.labrats .ocs__btn.accent:not(.fill) {
+  background: transparent;
+  color: var(--pref-accent-color);
+
+  &:hover {
+    background: var(--labrats-tint);
+  }
+}
+
+// `signal` tone: the goggle orange, reserved for the main action on a page.
+body.labrats .ocs__btn.signal.fill {
+  --ocs-btn-tone: var(--labrats-signal);
+  border-color: var(--labrats-signal);
+  background: var(--labrats-signal);
+  color: var(--labrats-on-signal);
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--pref-text-color);
+    background: color-mix(in srgb, var(--labrats-signal) 85%, var(--pref-text-color));
+    color: var(--labrats-on-signal);
+  }
+
+  &[aria-busy="true"] {
+    cursor: progress;
+    opacity: 0.7;
+  }
+}
+
+body.labrats .labrats__skip {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: $z-modal;
+  padding: 0.75rem 1rem;
+  border-radius: $labrats-radius-control;
+  background: var(--labrats-signal);
+  color: var(--labrats-on-signal);
+  font-weight: 700;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}
+
+body.labrats .labrats__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.labrats *,
+  body.labrats *::before,
+  body.labrats *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
