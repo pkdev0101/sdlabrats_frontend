@@ -66,7 +66,7 @@ search_exclude: true
       <h2 id="philosophy-title" class="labrats__visually-hidden">Our philosophy</h2>
       <p class="labrats__motto">Investigate. Do the experiment!</p>
       <p>Kids need a place where they can explore, ask questions, and get their hands dirty, with a mentor who knows the material. Our teachers are scientists who love their field and love teaching it. Every lab ties an idea from the textbook to something real.</p>
-      <p><a class="labrats__lede-link" href="{{ '/philosophy/' | relative_url }}">Read our education philosophy</a></p>
+      <p><a class="labrats__lede-link" href="{{ '/about-us/#philosophy' | relative_url }}">Read our education philosophy</a></p>
     </div>
     <figure class="labrats__figure">
       <img src="{{ '/images/projects/sdlabrats/camp-celebration.jpg' | relative_url }}" alt="A student throws an arm up in celebration while classmates laugh at a lab table" width="1200" height="774" loading="lazy">
@@ -88,7 +88,7 @@ search_exclude: true
         <li><img src="{{ '/images/projects/sdlabrats/press-encinitas-advocate.png' | relative_url }}" alt="Encinitas Advocate" width="230" height="30" loading="lazy"></li>
         <li><img src="{{ '/images/projects/sdlabrats/press-92024.png' | relative_url }}" alt="92024 magazine" width="60" height="60" loading="lazy"></li>
       </ul>
-      <p><a class="labrats__lede-link" href="{{ '/press/' | relative_url }}">Read the press clippings</a></p>
+      <p><a class="labrats__lede-link" href="{{ '/about-us/#press' | relative_url }}">Read the press clippings</a></p>
     </div>
     <div class="labrats__embed">
       <iframe src="https://www.youtube-nocookie.com/embed/YquvPfrx9_Q" title="A proud LabRats mom's testimonial" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -99,7 +99,7 @@ search_exclude: true
     <h2 id="donate-title">Help more kids get into the lab</h2>
     <p>We're a small local nonprofit, and our goal is to bring this program to underserved kids across San Diego County. Donations fund scholarships, supplies, and more class times at the STEM Discovery Center.</p>
     <div class="ocs__links">
-      <a class="ocs__btn signal fill" href="{{ '/ways-to-donate/' | relative_url }}">Donate</a>
+      <a class="ocs__btn signal fill" href="{{ '/contact/#donate' | relative_url }}">Donate</a>
       <a href="{{ org.impact_report | relative_url }}">See our impact report (PDF)</a>
     </div>
   </section>

@@ -7,11 +7,11 @@ lead: A 5K and fun run hosted by PacBio, a leader in genomic sequencing, benefit
 description: The PacBio "Sequence it forward" 5K and fun run on March 22, 2025 in Crown Point, benefiting San Diego LabRats STEM education.
 permalink: /pac-bio-5k-fundraiser/
 section: give
-parent: /ways-to-donate/
+parent: /contact/
 hide: true
 search_exclude: true
 archive_note: This event took place on March 22, 2025.
-current_url: /ways-to-donate/
+current_url: /contact/#donate
 current_title: Donate to LabRats today
 ---
 <div class="labrats__split">

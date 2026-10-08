@@ -7,11 +7,11 @@ lead: A festival fundraiser where ticket buyers could direct their proceeds to S
 description: The June 8, 2024 Encinitas Wine and Food Festival, a fundraiser where attendees could choose San Diego LabRats as their beneficiary.
 permalink: /wine-festival-fundraiser/
 section: give
-parent: /ways-to-donate/
+parent: /contact/
 hide: true
 search_exclude: true
 archive_note: This event took place on June 8, 2024.
-current_url: /ways-to-donate/
+current_url: /contact/#donate
 current_title: Donate to LabRats today
 ---
 <div class="labrats__split">

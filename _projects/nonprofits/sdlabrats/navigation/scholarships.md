@@ -5,7 +5,7 @@ heading: Apply for a scholarship
 lead: Up to 75% off afterschool classes and up to 50% off camps, funded by our community. We aim to award a scholarship for every paid student.
 description: Apply for a San Diego LabRats scholarship. Families earning under $89,000 a year and military families can get up to 75% off afterschool classes and 50% off camps.
 permalink: /scholarships/
-section: support
+section: about
 hide: true
 search_exclude: true
 ---
@@ -24,7 +24,7 @@ search_exclude: true
       <dt>Afterschool</dt><dd>Up to 75% off</dd>
       <dt>Camps</dt><dd>Up to 50% off</dd>
     </dl>
-    <p>We believe every student should have access to high-quality STEM education. <a href="{{ '/ways-to-donate/' | relative_url }}">Donate to the scholarship fund</a>.</p>
+    <p>We believe every student should have access to high-quality STEM education. <a href="{{ '/contact/#donate' | relative_url }}">Donate to the scholarship fund</a>.</p>
   </aside>
 </div>
 

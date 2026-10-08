@@ -1,4 +1,4 @@
-// Announcement bar, site header with the five-destination nav, and section tabs.
+// Announcement bar, site header with the main nav, section tabs, and the "On this page" bar.
 
 $labrats-nav-breakpoint: 62rem;
 
@@ -257,4 +257,52 @@ $labrats-nav-breakpoint: 62rem;
       border-bottom-color: var(--labrats-signal);
     }
   }
+}
+
+// "On this page" bar for combined pages; sticks below the site header.
+$labrats-header-height: 4.5rem;
+
+.labrats {
+  .labrats__contents {
+    position: sticky;
+    top: $labrats-header-height;
+    z-index: $z-sticky - 1;
+    border-bottom: 1px solid var(--ui-border);
+    background: var(--pref-bg-color);
+
+    ul {
+      display: flex;
+      gap: 0 1.5rem;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      list-style: none;
+      scrollbar-width: none;
+    }
+
+    a {
+      display: inline-block;
+      padding-block: 0.75rem;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      white-space: nowrap;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--pref-text-color);
+      }
+
+      &[aria-current] {
+        color: var(--pref-text-color);
+        font-weight: 700;
+        border-bottom-color: var(--labrats-signal);
+      }
+    }
+  }
+}
+
+// Leave room for the sticky header and contents bar when jumping to a section.
+html:has(> body.labrats) {
+  scroll-padding-top: 8.5rem;
 }

@@ -5,7 +5,6 @@ lead: The power of science comes from understanding both the facts and the proce
 description: Why San Diego LabRats teaches science - what science is, what doing science is about, and what makes a scientist a scientist.
 permalink: /why-learn-science/
 section: about
-parent: /philosophy/
 hide: true
 search_exclude: true
 ---

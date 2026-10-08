@@ -6,7 +6,6 @@ lead: Help us up the STEM stats today. Every gift supports hands-on STEM educati
 description: Support San Diego LabRats on Giving Tuesday. Donations to our 501(c)(3) fund hands-on STEM education. EIN 82-0839046.
 permalink: /giving-tuesday/
 section: give
-parent: /ways-to-donate/
 hide: true
 search_exclude: true
 ---

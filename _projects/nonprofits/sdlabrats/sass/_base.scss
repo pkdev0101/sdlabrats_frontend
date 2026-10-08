@@ -18,7 +18,6 @@
 // The html element sits outside the body scope, so overscroll areas get the page color here.
 html:has(> body.labrats) {
   background: map-get(map-get($labrats-palettes, light), bg);
-  scroll-padding-top: 6rem;
 }
 
 @media (prefers-color-scheme: dark) {

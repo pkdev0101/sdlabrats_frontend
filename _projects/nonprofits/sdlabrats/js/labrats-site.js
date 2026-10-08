@@ -72,7 +72,34 @@ function initThemeToggle() {
   });
 }
 
+// Marks the "On this page" link for the section nearest the top of the viewport.
+function initContents() {
+  const links = [...document.querySelectorAll("[data-labrats-contents] a")];
+  const sections = links.map((link) => document.getElementById(link.hash.slice(1))).filter(Boolean);
+  if (sections.length === 0 || !("IntersectionObserver" in window)) return;
+
+  const setCurrent = (id) => {
+    links.forEach((link) => {
+      if (link.hash === `#${id}`) {
+        link.setAttribute("aria-current", "true");
+        link.scrollIntoView({ block: "nearest", inline: "nearest" });
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting);
+      if (visible.length) setCurrent(visible[0].target.id);
+    },
+    { rootMargin: "-140px 0px -60% 0px" },
+  );
+  sections.forEach((section) => observer.observe(section));
+}
+
 initThemeToggle();
 initMenu();
+initContents();
 initAnnouncement();
 initForms();
