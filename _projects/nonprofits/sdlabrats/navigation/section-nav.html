@@ -2,7 +2,10 @@
   Tabs for the current section. Highlights the page itself, or its `parent` when the
   page is a child that is not listed (for example a monthly registration page).
 {%- endcomment -%}
-{%- assign section = site.data.sdlabrats.sections | where: "id", page.section | first -%}
+{%- assign section = nil -%}
+{%- if page.section -%}
+  {%- assign section = site.data.sdlabrats.sections | where: "id", page.section | first -%}
+{%- endif -%}
 {%- assign active_url = page.parent | default: page.url -%}
 {%- if section and section.pages.size > 1 -%}
 <nav class="labrats__tabs" aria-label="{{ section.title }}">

@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/projects/sdlabrats/main.css' | relative_url }}">
   <script type="module" src="{{ '/assets/js/projects/sdlabrats/labrats-site.js' | relative_url }}"></script>
+  {%- for script in page.scripts %}
+  <script type="module" src="{{ '/assets/js/projects/sdlabrats/' | append: script | relative_url }}"></script>
+  {%- endfor %}
 </head>
 <body class="labrats">
   <script>try{var t=localStorage.getItem("labrats-theme");if(t==="light"||t==="dark")document.body.dataset.theme=t}catch(e){}</script>

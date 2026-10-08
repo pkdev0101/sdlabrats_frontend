@@ -70,6 +70,26 @@ with an "On this page" bar (`contents:` front matter, `navigation/page-contents.
 The scholarship application, the two long essays (Why learn science, Our teaching methods), and
 each program and registration page stay separate because each is a task or a long read.
 
+### Accounts, assignments, and the admin console
+
+Accounts use the backend's existing sign-in (`POST /api/authenticate`, `GET /api/id`); LabRats
+staff create them, so there is no public sign-up.
+
+- `/sign-in/`: students and staff sign in, then go to `?next=` (same-site paths only) or their
+  home: `/admin/` for Admins, `/account/` for everyone else (`js/labrats-signin.js`).
+- `/account/`: a student's open assignments with a turn-in form each, plus feedback once
+  reviewed (`js/labrats-account.js`).
+- `/admin/`: Admin-only sign-in, then tabs for accounts (create, change role, reset password,
+  delete), website form submissions (filter, mark handled), and assignments (post, open or
+  close, read turn-ins, leave feedback) (`js/labrats-admin.js`).
+
+Shared pieces: `js/labrats-api.js` (backend calls through `assets/js/api/config.js`),
+`js/labrats-auth.js` (session), `js/labrats-dom.js` (builds user content as text, never HTML),
+`js/labrats-session-rules.js` (pure helpers, tested in `tests/test_sdlabrats_session_rules.mjs`).
+The backend enforces every permission again; the pages only decide what to show.
+
+Pages can load extra modules with `scripts: [file.js]` in front matter.
+
 ### Keeping the schedule current
 
 `/schedule/` lists every registration page whose front matter has

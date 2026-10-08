@@ -97,12 +97,14 @@ Regenerate this table if pages are added: it is built from each page's front mat
 
 ## Pages added in the rebuild
 
-Hubs required by the navigation, a branded 404, and redirects for URLs that the live site linked to
-but that returned errors.
+Hubs required by the navigation, the sign-in, account, and admin pages, a branded 404, and
+redirects for URLs that the live site linked to but that returned errors.
 
 | URL | Title | Section | Template | Source |
 |-----|-------|---------|----------|--------|
 | `/404.html` | Page not found | (none) | page | `navigation/not-found.md` |
+| `/account/` | My assignments | (none) | page | `navigation/account.md` |
+| `/admin/` | Admin console | (none) | page | `navigation/admin.md` |
 | `/fall-stem-camp/` | Fall STEM camp | (none) | redirect to `/camps/` | `navigation/redirect-fall-stem-camp.md` |
 | `/product/steam-discovery-camp-winter-grades-4-8/` | STEAM Discovery Camp, grades 4-8 | (none) | redirect to `/winter-steam-discover-camp-2021/` | `navigation/redirect-winter-camp-4-8-product.md` |
 | `/product/steam-discovery-camp-winter-grades-k-3/` | STEAM Discovery Camp, grades K-3 | (none) | redirect to `/winter-steam-discover-camp-2021/` | `navigation/redirect-winter-camp-k-3-product.md` |
@@ -110,6 +112,7 @@ but that returned errors.
 | `/register/` | Register | (none) | redirect to `/schedule/` | `navigation/redirect-register.md` |
 | `/request-a-class-form/` | Request a class | (none) | redirect to `/contact/` | `navigation/redirect-request-a-class-form.md` |
 | `/schedule/` | Schedule and pricing | Schedule & Pricing | page | `navigation/schedule.md` |
+| `/sign-in/` | Sign in | (none) | page | `navigation/sign-in.md` |
 | `/stem-discovery-center-2/` | STEM Discovery Center | (none) | redirect to `/stem-discovery-center-2-2/` | `navigation/stem-discovery-center-2.md` |
 | `/summer-camps/` | Summer camps | (none) | redirect to `/summer-stem-camps/` | `navigation/redirect-summer-camps.md` |
 | `/support/` | Paying for programs | (none) | redirect to `/about-us/#help-paying` | `navigation/support.md` |
