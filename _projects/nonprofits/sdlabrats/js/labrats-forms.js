@@ -82,7 +82,7 @@ async function submitForm(form) {
   }
 }
 
-function showErrors(form, errors) {
+export function showErrors(form, errors) {
   form.querySelectorAll(".labrats__field-error").forEach((element) => {
     element.hidden = true;
     element.textContent = "";
@@ -107,14 +107,14 @@ function showErrors(form, errors) {
   }
 }
 
-function focusFirstError(form) {
+export function focusFirstError(form) {
   const invalid = form.querySelector('[aria-invalid="true"]');
   if (!invalid) return;
   const focusable = invalid.matches("fieldset") ? invalid.querySelector("input") : invalid;
   focusable?.focus();
 }
 
-function setStatus(form, state, message) {
+export function setStatus(form, state, message) {
   const status = form.querySelector(".labrats__form-status");
   status.dataset.state = state;
   status.textContent = message;

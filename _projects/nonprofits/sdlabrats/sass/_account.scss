@@ -1,0 +1,183 @@
+// Sign-in, student assignments, and the admin console. Built on the OCS input, button,
+// toggle, and table grammar; these rules only arrange them.
+
+.labrats {
+  .labrats__nav-signin {
+    color: var(--pref-text-color);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    white-space: nowrap;
+
+    &[aria-current] {
+      text-decoration-color: var(--labrats-signal);
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  .labrats__signin,
+  .labrats__admin-signin {
+    max-width: 26rem;
+  }
+
+  // A button that reads as a link, for secondary actions inside sentences and table rows.
+  .labrats__text-button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--pref-accent-color);
+    font: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+
+    &--danger {
+      color: var(--red);
+    }
+  }
+
+  // Student assignment cards and admin assignment rows share one look.
+  .labrats__assignments {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .labrats__assignment {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--pref-text-color);
+
+    h2,
+    h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.375rem;
+    }
+
+    &[data-state="reviewed"] {
+      border-top-color: var(--pref-success-color);
+    }
+  }
+
+  .labrats__assignment-instructions {
+    white-space: pre-line;
+  }
+
+  .labrats__turnins {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--ui-border);
+  }
+
+  .labrats__turnin {
+    h4 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    &[data-state="submitted"] .labrats__grade {
+      border-left-color: var(--pref-accent-color);
+    }
+  }
+
+  // Admin console
+  .labrats__console-status {
+    min-height: 1.6em;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .labrats__console-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--ui-border);
+
+    [role="tab"] {
+      padding: 0.75rem 0;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: none;
+      color: var(--text-muted);
+      font: 700 1rem $labrats-font-body;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--pref-text-color);
+      }
+
+      &[aria-selected="true"] {
+        color: var(--pref-text-color);
+        border-bottom-color: var(--labrats-signal);
+      }
+    }
+  }
+
+  .labrats__console-panel > h2 {
+    margin-bottom: 1rem;
+  }
+
+  .labrats__panel-form {
+    margin-bottom: 2rem;
+
+    form {
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  .labrats__console-search {
+    max-width: 24rem;
+    margin-bottom: 1rem;
+  }
+
+  .labrats__console-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-bottom: 1rem;
+
+    .labrats__field {
+      min-width: 12rem;
+    }
+  }
+
+  .labrats__compact-input {
+    min-height: 2.5rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .labrats__row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem 1rem;
+  }
+
+  // details elements inside table rows: no section borders, just the toggle.
+  .labrats__row-action {
+    margin: 0;
+    border: 0;
+
+    summary {
+      padding: 0;
+      color: var(--pref-accent-color);
+    }
+  }
+
+  .labrats__inline-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .labrats__details {
+    display: block;
+    max-width: 28rem;
+    font-size: 0.9375rem;
+  }
+
+  .labrats__field--toggle {
+    justify-content: flex-end;
+  }
+}

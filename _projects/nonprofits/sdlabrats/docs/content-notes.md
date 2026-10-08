@@ -88,3 +88,9 @@ are kept, but someone should click through them:
 - Form submissions are stored by the backend and listed for admins at `/labrats/inquiries/`. Like the
   old WPForms, the backend can email each submission to staff: set `LABRATS_NOTIFY_TO` and the
   `SMTP_*` variables in the backend `.env` (see the backend README) with LabRats' mail account.
+- **Accounts:** change the backend's default admin password (`ADMIN_PASSWORD` in `.env`) before
+  giving anyone the `/admin/` address, then create staff and student accounts from the console.
+- **Sign-in cookie:** the backend sets its sign-in cookie on `.opencodingsociety.com`. A site served
+  from another domain (github.io or sdlabrats.org) relies on the browser accepting that cross-site
+  cookie; Safari and other browsers that block third-party cookies won't keep people signed in. The
+  sign-in page says so when it happens. Serving the site and API from the same domain avoids this.
