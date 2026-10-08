@@ -5,7 +5,6 @@ lead: We aim to inspire kids to love learning science, and to motivate them to d
 description: How San Diego LabRats teaches - self, social, and custodial engagement, learner-centered courses, and scientists as role models.
 permalink: /our-teaching-methods/
 section: about
-parent: /philosophy/
 hide: true
 search_exclude: true
 ---

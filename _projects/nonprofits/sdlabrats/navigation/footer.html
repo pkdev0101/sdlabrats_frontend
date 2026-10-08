@@ -25,7 +25,9 @@
       <div>
         <h2>{{ section.title }}</h2>
         <ul>
-          {%- for item in section.pages %}
+          {%- assign links = section.pages %}
+          {%- if section.anchors %}{% assign links = section.pages | concat: section.anchors %}{% endif %}
+          {%- for item in links %}
           <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
           {%- endfor %}
         </ul>

@@ -8,19 +8,15 @@ permalink: /schedule/
 section: schedule
 hide: true
 search_exclude: true
+contents:
+  - { id: afterschool, title: Afterschool }
+  - { id: camps, title: Holiday camps }
+  - { id: pricing, title: Pricing }
+  - { id: events, title: Open house and Thrive }
+  - { id: seasons, title: Spring and summer }
+  - { id: earlier, title: Earlier sessions }
 ---
 {%- assign org = site.data.sdlabrats -%}
-<nav class="labrats__section" aria-label="On this page">
-  <ul class="labrats__list labrats__columns">
-    <li><a href="#afterschool">Afterschool classes</a></li>
-    <li><a href="#camps">Holiday break camps</a></li>
-    <li><a href="#pricing">Pricing and payment</a></li>
-    <li><a href="#events">Open house and Thrive payments</a></li>
-    <li><a href="#seasons">Spring and summer camps</a></li>
-    <li><a href="#earlier">Earlier sessions</a></li>
-  </ul>
-</nav>
-
 <section class="labrats__section" id="afterschool" aria-labelledby="afterschool-title">
   <h2 id="afterschool-title">Afterschool classes</h2>
   <p>Two-hour sessions at the STEM Discovery Center: a one-hour lab with a scientist, then an hour of open maker space. Pick one weekly day and time for the month. <a href="{{ '/stem-discovery-center-2-3-2/' | relative_url }}">About afterschool</a></p>
@@ -49,7 +45,7 @@ search_exclude: true
           </tbody>
         </table>
       </div>
-      <p>You register and pay in one step on each session's Donorbox form, which shows the final price. Scholarships take up to 75% off afterschool and up to 50% off camps (<a href="{{ '/scholarships/' | relative_url }}">apply</a>), and many California charter schools cover LabRats with educational funds (<a href="{{ '/ways-to-donate-2/' | relative_url }}">check yours</a>).</p>
+      <p>You register and pay in one step on each session's Donorbox form, which shows the final price. Scholarships take up to 75% off afterschool and up to 50% off camps (<a href="{{ '/scholarships/' | relative_url }}">apply</a>), and many California charter schools cover LabRats with educational funds (<a href="{{ '/about-us/#charter' | relative_url }}">check yours</a>).</p>
       <p><a href="{{ '/images/projects/sdlabrats/afterschool-schedule-fall-2026.jpg' | relative_url }}">October 2026 afterschool flyer (image)</a></p>
     </div>
     <div>

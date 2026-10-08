@@ -48,11 +48,27 @@ Every page sets `layout: sdlabrats` plus a `template`:
 
 | `template` | Used for | Key front matter |
 |------------|----------|------------------|
-| `page` (default) | Hubs, About pages, support pages | `section`, `description` |
+| `page` (default) | Hubs and combined pages | `section`, `description`, `contents` ("On this page" bar) |
 | `program` | The five program pages; one shared information order | `program` (catalog slug), `facts` |
 | `registration` | Monthly afterschool and camp registration pages | `session` block, `donorbox_campaign` |
 | `archive` | Past events and retired pages that still have URLs | `archive_note`, `current_url` |
-| `redirect` | Live URLs that were empty or moved | `redirect_to` |
+| `redirect` | Live URLs that were empty, moved, or merged into a combined page | `redirect_to` (may include a `#section`) |
+
+### Combined pages
+
+The main navigation has four destinations. Related topics share one page, split into sections
+with an "On this page" bar (`contents:` front matter, `navigation/page-contents.html`):
+
+- `/about-us/` About and support: who we are, impact, team, how we teach, help paying, charter
+  schools, press, flyers. `/support/`, `/labrats-team/`, `/philosophy/`, `/press/`,
+  `/flyers-to-share/`, `/video-link/`, and `/ways-to-donate-2/` redirect to its sections.
+- `/contact/` Donate and contact: message form, donating, corporate partnerships, campaigns.
+  `/ways-to-donate/` and `/corporate-partnerships/` redirect to its sections.
+- `/stemathome/` also holds BrainSTEMtv and the crystal lab; `/brainstemtv/` and
+  `/build-your-own-crystal/` redirect there.
+
+The scholarship application, the two long essays (Why learn science, Our teaching methods), and
+each program and registration page stay separate because each is a task or a long read.
 
 ### Keeping the schedule current
 

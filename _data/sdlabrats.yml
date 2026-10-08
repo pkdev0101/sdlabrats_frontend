@@ -46,9 +46,11 @@ announcement:
   link_text: See camp dates
   url: /camps/
 
-# Main navigation: five destinations (issue #1). Each section's `pages` become the
-# section tabs under the page heading. A page joins a section with `section:` in its
-# front matter; `parent:` highlights a tab when the page itself is not listed.
+# Main navigation: four destinations. About and Support share one page (/about-us/), as do
+# Donate and Contact (/contact/); their old pages redirect to sections of those pages.
+# Each section's `pages` become the section tabs under the page heading. A page joins a
+# section with `section:` in its front matter; `parent:` highlights a tab when the page
+# itself is not listed.
 sections:
   - id: programs
     title: Programs
@@ -80,40 +82,45 @@ sections:
         url: /free-open-house-register-today/
       - title: Thrive payments
         url: /thrive-payment-processing-only/
-  - id: support
-    title: Support
-    url: /support/
-    pages:
-      - title: Paying for programs
-        url: /support/
-      - title: Scholarships
-        url: /scholarships/
-      - title: Charter school funding
-        url: /ways-to-donate-2/
   - id: about
-    title: About
+    title: About & Support
     url: /about-us/
     pages:
-      - title: About LabRats
+      - title: About & support
         url: /about-us/
+      - title: Scholarship application
+        url: /scholarships/
+      - title: Why learn science
+        url: /why-learn-science/
+      - title: Our teaching methods
+        url: /our-teaching-methods/
+    # Sections inside the combined page, listed in the footer site map.
+    anchors:
       - title: Team
-        url: /labrats-team/
-      - title: Philosophy
-        url: /philosophy/
+        url: /about-us/#team
+      - title: Help paying
+        url: /about-us/#help-paying
+      - title: Charter schools
+        url: /about-us/#charter
       - title: Press
-        url: /press/
+        url: /about-us/#press
       - title: Flyers to share
-        url: /flyers-to-share/
+        url: /about-us/#flyers
   - id: give
     title: Donate & Contact
     url: /contact/
     pages:
-      - title: Contact
+      - title: Donate & contact
         url: /contact/
+      - title: Giving Tuesday
+        url: /giving-tuesday/
+    anchors:
+      - title: Contact
+        url: /contact/#contact
       - title: Donate
-        url: /ways-to-donate/
+        url: /contact/#donate
       - title: Corporate partnerships
-        url: /corporate-partnerships/
+        url: /contact/#partnerships
 
 # Program catalog. `slug` values are the contract with the Flask backend
 # (sdlabrats_backend/api/programs_api.py validates inquiry interests against them).

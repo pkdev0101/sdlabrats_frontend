@@ -7,7 +7,7 @@ lead: Thanks to Viasat for donating bikes, LabRats gave four bikes away to LabRa
 description: The LabRats holiday bike giveaway - four bikes donated by Viasat, given to families who attended LabRats camps and afterschool classes.
 permalink: /free-bike-give-away/
 section: give
-parent: /ways-to-donate/
+parent: /contact/
 hide: true
 search_exclude: true
 archive_note: This giveaway was announced in November 2025, with drawings on December 1 and January 1.

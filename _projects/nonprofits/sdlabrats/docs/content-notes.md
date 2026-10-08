@@ -36,6 +36,12 @@ needs an answer from LabRats before it can be completed.
 
 ## Decisions made in the rebuild
 
+- **Combined pages (October 7, 2026).** Support and About became one page (`/about-us/`), and
+  Donate and Contact became one page (`/contact/`), each split into sections with an "On this
+  page" bar; BrainSTEMtv and the crystal lab joined STEM at Home. Every merged URL redirects to its
+  section. All text, lists, forms, quotes, and outbound links were kept; prose was tightened, the
+  two sponsorship flyers became links, and one decorative photo was dropped from the charter section.
+
 - **Years on past sessions.** Monthly registration pages listed dates without a year. The year was
   found by matching weekdays (for example, "Wednesday 11/5" only fits 2025). Only the October 2026
   afterschool pages and the Thanksgiving and winter 2026 camps are marked `open`.

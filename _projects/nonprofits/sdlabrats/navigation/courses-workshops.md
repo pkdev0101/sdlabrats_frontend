@@ -43,5 +43,5 @@ help: schools
 <section class="labrats__section" aria-labelledby="courses-educators">
   <h2 id="courses-educators">Who teaches</h2>
   <p>Courses are taught by working scientists, including Dr. Shawn Carlson, a nuclear physicist and nationally known science writer, and J. Ryan Merrill, a chemist who taught chemistry classes and labs at the University of Colorado Boulder.</p>
-  <p><a class="labrats__lede-link" href="{{ '/labrats-team/' | relative_url }}">Meet the team</a></p>
+  <p><a class="labrats__lede-link" href="{{ '/about-us/#team' | relative_url }}">Meet the team</a></p>
 </section>
