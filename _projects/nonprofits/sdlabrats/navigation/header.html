@@ -20,7 +20,7 @@
         {%- endfor %}
       </ul>
       <a class="labrats__nav-phone" href="{{ org.phone_href }}">Call {{ org.phone }}</a>
-      <a class="labrats__nav-signin" href="{{ '/sign-in/' | relative_url }}"{% if page.url == '/sign-in/' or page.url == '/account/' or page.url == '/admin/' %} aria-current="page"{% endif %}>Sign in</a>
+      <a class="labrats__nav-signin" data-labrats-session-link href="{{ '/sign-in/' | relative_url }}"{% if page.url == '/sign-in/' or page.url == '/account/' or page.url == '/admin/' %} aria-current="page"{% endif %}>Sign in</a>
     </nav>
   </div>
 </header>
