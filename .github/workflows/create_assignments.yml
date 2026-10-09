@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   create-assignments:
+    # Only the OCS pages repo holds the bot secret and owns the Spring assignments; copies skip.
+    if: github.repository == 'Open-Coding-Society/pages'
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
