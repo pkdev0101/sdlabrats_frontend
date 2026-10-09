@@ -1,6 +1,8 @@
 // Announcement bar, site header with the main nav, section tabs, and the "On this page" bar.
 
-$labrats-nav-breakpoint: 62rem;
+// The full nav (sections, phone, and the account link) needs the whole page width, so it
+// folds behind the Menu button until the wrap reaches its maximum.
+$labrats-nav-breakpoint: $labrats-wrap;
 
 .labrats {
   .labrats__announcement {
@@ -67,6 +69,7 @@ $labrats-nav-breakpoint: 62rem;
   }
 
   .labrats__brand {
+    flex: none;
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
@@ -96,12 +99,12 @@ $labrats-nav-breakpoint: 62rem;
   .labrats__nav {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
+    gap: 1.25rem;
+    white-space: nowrap;
 
     ul {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.5rem;
+      gap: 1.25rem;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -128,7 +131,6 @@ $labrats-nav-breakpoint: 62rem;
   .labrats__nav-phone {
     color: var(--pref-text-color);
     font-size: 0.9375rem;
-    white-space: nowrap;
   }
 
   .labrats__menu-toggle {

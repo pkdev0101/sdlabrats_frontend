@@ -2,17 +2,43 @@
 // POST /api/authenticate (sign in), GET /api/id (who am I), DELETE /api/authenticate (sign out).
 import { baseurl } from "../../api/config.js";
 import { apiRequest, BackendUnavailableError } from "./labrats-api.js";
-import { safeNextPath, homeForRole } from "./labrats-session-rules.js";
+import { safeNextPath, homeForRole, sessionLink, cookieBlockedMessage } from "./labrats-session-rules.js";
+import { readStorage, writeStorage, removeStorage } from "./labrats-storage.js";
+
+// Set while this browser holds a sign-in, so pages only ask the backend who is signed in
+// when someone might be. Visitors who never sign in make no sign-in requests.
+const SIGNED_IN_KEY = "labrats-signed-in";
 
 // The signed-in user ({ uid, name, role, ... }) or null when nobody is signed in.
 export async function getCurrentUser() {
   const { ok, data } = await apiRequest("/api/id");
-  return ok && data ? data : null;
+  const user = ok && data ? data : null;
+  if (user) {
+    writeStorage(SIGNED_IN_KEY, "1");
+  } else {
+    removeStorage(SIGNED_IN_KEY);
+  }
+  return user;
 }
 
 export async function signOut() {
   await apiRequest("/api/authenticate", { method: "DELETE" }).catch(() => {});
+  removeStorage(SIGNED_IN_KEY);
   window.location.assign(`${baseurl}/sign-in/`);
+}
+
+// Points the header's "Sign in" link at the signed-in person's page.
+export async function initSessionLink() {
+  const link = document.querySelector("[data-labrats-session-link]");
+  if (!link || !readStorage(SIGNED_IN_KEY)) return;
+  try {
+    const { href, label } = sessionLink(await getCurrentUser(), baseurl);
+    link.href = href;
+    link.textContent = label;
+  } catch (error) {
+    // Backend unreachable: the link keeps pointing at the sign-in page.
+    if (!(error instanceof BackendUnavailableError)) throw error;
+  }
 }
 
 function setStatus(form, state, message) {
@@ -46,7 +72,7 @@ export function initSignInForm(form, { requiredRole = form.dataset.requiredRole 
       }
       const user = await getCurrentUser();
       if (!user) {
-        setStatus(form, "error", "Signed in, but this browser blocked the sign-in cookie. Allow cookies for this site and try again.");
+        setStatus(form, "error", cookieBlockedMessage(window.location.href));
         return;
       }
       if (requiredRole && user.role !== requiredRole) {

@@ -1,25 +1,10 @@
 // Entry point for every LabRats page (loaded as a module from _layouts/sdlabrats.html).
 import { initForms } from "./labrats-forms.js";
+import { readStorage, writeStorage } from "./labrats-storage.js";
+import { initSessionLink } from "./labrats-auth.js";
 
 const THEME_KEY = "labrats-theme";
 const DISMISSED_PREFIX = "labrats-dismissed-";
-
-// Storage can be unavailable (private mode, blocked site data); preferences are optional.
-function readStorage(key) {
-  try {
-    return window.localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
-function writeStorage(key, value) {
-  try {
-    window.localStorage.setItem(key, value);
-  } catch {
-    // The preference simply will not persist.
-  }
-}
 
 function initMenu() {
   const header = document.querySelector(".labrats__header");
@@ -103,3 +88,4 @@ initMenu();
 initContents();
 initAnnouncement();
 initForms();
+initSessionLink();

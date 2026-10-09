@@ -88,6 +88,18 @@ Shared pieces: `js/labrats-api.js` (backend calls through `assets/js/api/config.
 `js/labrats-session-rules.js` (pure helpers, tested in `tests/test_sdlabrats_session_rules.mjs`).
 The backend enforces every permission again; the pages only decide what to show.
 
+The header's "Sign in" link becomes "My assignments" or "Admin console" once someone signs in.
+A `labrats-signed-in` flag in localStorage records that this browser has signed in, so pages only
+ask `/api/id` when someone might be signed in; families who never sign in make no sign-in calls.
+
+Sign-in needs the backend's cookie to reach the browser:
+
+- Local: run the backend on 8587 and open the site at `http://localhost:4500`. At
+  `127.0.0.1` the cookie is dropped (`config.js` calls the backend at `localhost`, a different
+  site), and the sign-in form says to switch to `localhost`.
+- Deployed: the backend that `config.js` points to (`flask.opencodingsociety.com`) must run
+  this backend's code and list the site's origin in its CORS `allowed_origins`.
+
 Pages can load extra modules with `scripts: [file.js]` in front matter.
 
 ### Keeping the schedule current
